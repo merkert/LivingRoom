@@ -34,7 +34,6 @@ public class Scene implements Runnable{
             Thread.sleep(5);
             if(System.currentTimeMillis()-currentTime >= 1000)
             {
-                logic.addtime();
                 currentTime = System.currentTimeMillis();
             }
             render();

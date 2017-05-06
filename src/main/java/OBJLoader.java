@@ -3,9 +3,9 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
-public class OBJLoader {
+public  class OBJLoader {
 
-    public static Mesh loadMesh(String fileName) throws Exception {
+    public static  Mesh loadMesh(String fileName) throws Exception {
         List<String> lines = Utils.readAllLines(fileName);
 
         List<Vector3f> vertices = new ArrayList<>();
@@ -69,7 +69,9 @@ public class OBJLoader {
 
         for (Face face : facesList) {
             IdxGroup[] faceVertexIndices = face.getFaceVertexIndices();
+            int is =0;
             for (IdxGroup indValue : faceVertexIndices) {
+                is++;
                 processFaceVertex(indValue, textCoordList, normList,
                         indices, textCoordArr, normArr);
             }
@@ -96,14 +98,14 @@ public class OBJLoader {
         }
         if (indices.idxVecNormal >= 0) {
             // Reorder vectornormals
-            Vector3f vecNorm = normList.get(indices.idxVecNormal);
+            Vector3f vecNorm = normList.get(indices.idxVecNormal );
             normArr[posIndex * 3] = vecNorm.x;
             normArr[posIndex * 3 + 1] = vecNorm.y;
             normArr[posIndex * 3 + 2] = vecNorm.z;
         }
     }
 
-    protected static class Face {
+    public static class Face {
 
         /**
          * List of idxGroup groups for a face triangle (3 vertices per face).
@@ -141,7 +143,7 @@ public class OBJLoader {
         }
     }
 
-    protected static class IdxGroup {
+    public static  class IdxGroup {
 
         public static final int NO_VALUE = -1;
 
